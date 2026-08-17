@@ -6,6 +6,8 @@ const googleSansFlex = Google_Sans_Flex({
   variable: "--font-gsf",
   subsets: ["latin"],
   weight: "variable",
+  fallback: ["ui-sans-serif", "system-ui", "arial"],
+  adjustFontFallback: false,
 });
 
 const geistMono = Geist_Mono({
