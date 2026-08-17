@@ -1,69 +1,160 @@
-import Image from "next/image";
+"use client";
+
+import { Header } from "./_components/Header";
+import { Footer } from "./_components/Footer";
+import { Hero } from "./_components/Hero";
+import { Pillars } from "./_components/Pillars";
+import { FeatureGrid } from "./_components/FeatureGrid";
+import { Spotlight } from "./_components/Spotlight";
+import { ContactCTA } from "./_components/ContactCTA";
+import { Ladder } from "./_components/Ladder";
+import { StackSection } from "./_components/StackSection";
+import { CompareSlider } from "./_components/CompareSlider";
+import { ImageSlide } from "./_components/ImageSlide";
+import { VideoSlide } from "./_components/VideoSlide";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <Header />
+      <main className="flex flex-col">
+        <Hero />
+        <Pillars />
+        <FeatureGrid />
+
+        <StackSection index={0}>
+          <Spotlight
+            eyebrow="Portfolio dashboard"
+            title="Your entire housing stock, at a glance"
+            body="Stop toggling between spreadsheets. Total properties, average EPC rating, CO2 output, solar PV coverage, and retrofit measures completed, all live on one screen."
+            bullets={[
+              "EPC band distribution across the portfolio",
+              "Monthly energy consumption, gas versus electricity",
+              "Retrofit measures completed, filterable by area",
+              "Properties requiring attention, ranked by risk",
+            ]}
+            image="/images/screenshots/dashboard-white.png"
+            imageAlt="PAIR portfolio dashboard showing EPC band distribution and retrofit measures"
+          />
+        </StackSection>
+
+        <StackSection index={1}>
+          <Spotlight
+            eyebrow="Net Zero dashboard"
+            title="Visualise the path to Net Zero"
+            body="Track carbon output across properties and fleet vehicles against your target year, with a reduction pathway and an honest read on whether you're on track."
+            bullets={[
+              "Organisational footprint by source: properties, fleet, travel",
+              "Progress against baseline and target year",
+              "On-track probability, not just a trend line",
+            ]}
+            image="/images/screenshots/dashboard-net-zero.png"
+            imageAlt="PAIR Net Zero dashboard showing organisational carbon footprint and reduction progress"
+          />
+        </StackSection>
+
+        <StackSection index={2}>
+          <Spotlight
+            eyebrow="EPC certificate lookup"
+            title="Live EPC data, straight from source"
+            body="PAIR integrates directly with the GOV.UK EPC register, so your team sees current and potential ratings, construction details, and suggested improvements without manual lookups."
+            image="/images/screenshots/epc-details.png"
+            imageAlt="PAIR EPC certificate detail view showing current and potential energy rating"
+            extra={
+              <div className="mt-8">
+                <Ladder compact currentLabel="This home today: band D" targetLabel="Potential: band B" />
+              </div>
+            }
+          />
+        </StackSection>
+
+        <StackSection index={3}>
+          <Spotlight
+            eyebrow="Portfolio to property"
+            title="From six thousand homes to one front door"
+            body="Filter the full portfolio by local authority, SAP band, or retrofit measure, then drop into a single property's EPC history, energy costs, and construction detail."
+            slides={[
+              () => (
+                <CompareSlider
+                  frameless
+                  beforeSrc="/images/screenshots/houses-white.png"
+                  afterSrc="/images/screenshots/houses-dark.png"
+                  beforeLabel="Light mode"
+                  afterLabel="Dark mode"
+                />
+              ),
+              () => (
+                <ImageSlide
+                  src="/images/screenshots/house-detail-1.png"
+                  alt="PAIR single property detail view showing EPC performance profile"
+                />
+              ),
+              () => (
+                <ImageSlide
+                  src="/images/screenshots/house-detail-2.png"
+                  alt="PAIR single property detail view showing energy consumption breakdown"
+                />
+              ),
+            ]}
+          />
+        </StackSection>
+
+        <StackSection index={4}>
+          <Spotlight
+            dark
+            eyebrow="Explainable AI"
+            title="AI that shows its reasoning"
+            body="PAIR's models rank properties by performance and recommend retrofit measures with a feature-by-feature breakdown of why, run on whichever model provider your organisation trusts."
+            bullets={[
+              "Confidence scores and recorded inference history, not a black box",
+              "Feature importance for every classification",
+            ]}
+            slides={[
+              (active) => (
+                <VideoSlide
+                  active={active}
+                  src="/images/screenshots/genesis-quantum-run.mp4"
+                  poster="/images/screenshots/model-usage.png"
+                />
+              ),
+              () => (
+                <ImageSlide
+                  src="/images/screenshots/model-usage.png"
+                  alt="PAIR Explorer model showing performance metrics and feature importance"
+                />
+              ),
+            ]}
+          />
+        </StackSection>
+
+        <StackSection index={5}>
+          <Spotlight
+            eyebrow="Model choice"
+            title="Bring the LLM your organisation already trusts"
+            body="Run PAIR's AI features on a local model for full data privacy, or connect Google Gemini or Anthropic Claude when you want more horsepower. Switch providers any time."
+            bullets={[
+              "Local models via Ollama, so data never leaves your infrastructure",
+              "Or connect Google Gemini or Anthropic Claude",
+              "Pull and manage models directly from the app",
+            ]}
+            image="/images/screenshots/llm-providors.png"
+            imageAlt="PAIR LLM configuration screen showing Ollama, Gemini, and Claude provider options"
+          />
+        </StackSection>
+
+        <StackSection index={6}>
+          <Spotlight
+            eyebrow="Built for teams"
+            title="Role based access for everyone involved"
+            body="Admins, staff, and viewers see exactly what their role needs, from asset managers running models to executives reviewing progress."
+            image="/images/screenshots/user-management.png"
+            imageAlt="PAIR user management screen showing roles and account status"
+          />
+        </StackSection>
+
+        <ContactCTA />
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
