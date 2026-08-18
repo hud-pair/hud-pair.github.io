@@ -35,6 +35,9 @@ export function Footer() {
               <Link href="/#product" className="text-sm text-white/80 hover:text-white">
                 Product
               </Link>
+              <Link href="/case-studies" className="text-sm text-white/80 hover:text-white">
+                Case studies
+              </Link>
               <Link href="/contributions" className="text-sm text-white/80 hover:text-white">
                 Contributions
               </Link>

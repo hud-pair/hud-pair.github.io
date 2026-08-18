@@ -36,6 +36,31 @@ npm run start   # serve the production build
 npm run lint    # run eslint
 ```
 
+## Content
+
+### Case studies
+
+Case studies are plain data, not a CMS. Everything lives in [lib/case-studies.ts](lib/case-studies.ts) as an array of `CaseStudy` objects:
+
+```ts
+{
+  slug: "your-slug-here",       // becomes /case-studies/your-slug-here
+  eyebrow: "Category label",     // short tag shown above the title
+  title: "The page title",
+  dek: "One sentence summary shown on the index card and the detail page.",
+  cover: "/images/screenshots/some-image.png",
+  coverAlt: "Description for screen readers",
+  sections: [
+    { heading: "A short heading", body: "A few honest sentences." },
+  ],
+  showLadder: false,             // optional: shows the EPC ladder graphic at the end
+}
+```
+
+To add a case study, add an entry to that array. Nothing else needs to change: [app/case-studies/page.tsx](app/case-studies/page.tsx) lists every entry automatically, and [app/case-studies/[slug]/page.tsx](app/case-studies/%5Bslug%5D/page.tsx) generates a static route for each `slug` via `generateStaticParams`. Unknown slugs 404 (`dynamicParams = false`), which is required for the static export.
+
+One rule worth keeping: do not invent specific results, statistics, or quotes and attribute them to a real partner. Write what is actually true (the project context, what the pilot is testing) rather than a polished outcome that has not happened yet. If a case study only has honest, general things to say, that is fine, say those.
+
 ## Deployment
 
 Pushes to `main` are automatically built and deployed to GitHub Pages via the workflow in [.github/workflows/nextjs.yml](.github/workflows/nextjs.yml).

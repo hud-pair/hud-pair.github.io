@@ -2,17 +2,21 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const NAV = [
-  { label: "Product", href: "#product" },
-  { label: "How it works", href: "#pillars" },
+  { label: "Product", href: "/#product", section: "product" },
+  { label: "How it works", href: "/#pillars", section: "pillars" },
+  { label: "Case studies", href: "/case-studies" },
   { label: "Contributions", href: "/contributions" },
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -20,6 +24,38 @@ export function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection(null);
+      return;
+    }
+
+    const sections = NAV.map((item) => item.section)
+      .filter((id): id is string => !!id)
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting);
+        if (visible.length > 0) {
+          setActiveSection(visible[0].target.id);
+        }
+      },
+      { rootMargin: "-96px 0px -70% 0px", threshold: 0 },
+    );
+
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  const isActive = (item: (typeof NAV)[number]) => {
+    if (item.section) return pathname === "/" && activeSection === item.section;
+    return pathname === item.href || pathname.startsWith(`${item.href}/`);
+  };
 
   return (
     <header
@@ -40,7 +76,12 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="font-medium text-sm text-ink/80 hover:text-brand-strong transition-colors"
+              aria-current={isActive(item) ? "page" : undefined}
+              className={`relative py-1 text-sm font-medium transition-colors ${
+                isActive(item)
+                  ? "active text-brand-strong after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-[2px] after:rounded-full after:bg-brand-strong"
+                  : "text-ink/80 hover:text-brand-strong"
+              }`}
             >
               {item.label}
             </Link>
@@ -75,8 +116,17 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="text-sm font-medium text-ink"
+                aria-current={isActive(item) ? "page" : undefined}
+                className={`flex items-center gap-2 text-sm font-medium transition-colors ${
+                  isActive(item) ? "active text-brand-strong" : "text-ink"
+                }`}
               >
+                <span
+                  className={`size-1.5 rounded-full transition-opacity ${
+                    isActive(item) ? "bg-brand-strong opacity-100" : "opacity-0"
+                  }`}
+                  aria-hidden="true"
+                />
                 {item.label}
               </Link>
             ))}
