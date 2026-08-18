@@ -102,7 +102,7 @@ export function Header() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex size-9 items-center justify-center rounded-full border border-line text-ink md:hidden"
+          className="flex size-11 items-center justify-center rounded-full border border-line text-ink md:hidden"
         >
           <span aria-hidden="true">{open ? "✕" : "☰"}</span>
         </button>

@@ -97,7 +97,7 @@ export function CompareSlider({
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onKeyDown={onKeyDown}
-        className="absolute top-1/2 flex size-10 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full bg-white text-brand-deep shadow-lg ring-2 ring-white/50 transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-brand"
+        className="absolute top-1/2 flex size-11 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full bg-white text-brand-deep shadow-lg ring-2 ring-white/50 transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-brand"
         style={{ left: `${pos}%` }}
       >
         <svg viewBox="0 0 24 24" className="size-4" fill="currentColor">

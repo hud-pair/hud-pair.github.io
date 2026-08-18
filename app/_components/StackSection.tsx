@@ -25,8 +25,8 @@ export function StackSection({ index, children }: { index: number; children: Rea
   }
 
   return (
-    <div ref={ref} className="relative" style={{ zIndex: index + 1, minHeight: "125vh" }}>
-      <div className="sticky top-0">
+    <div ref={ref} className="relative md:min-h-[125vh]" style={{ zIndex: index + 1 }}>
+      <div className="md:sticky md:top-0">
         <motion.div style={{ opacity }}>{children}</motion.div>
       </div>
     </div>

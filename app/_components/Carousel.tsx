@@ -57,7 +57,7 @@ export function Carousel({ slides }: { slides: Array<(active: boolean) => ReactN
             type="button"
             aria-label="Previous slide"
             onClick={() => go(index - 1)}
-            className="absolute left-3 top-1/2 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition hover:bg-black/65"
+            className="absolute left-2 top-1/2 flex size-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition hover:bg-black/65"
           >
             <Chevron direction="left" />
           </button>
@@ -65,11 +65,11 @@ export function Carousel({ slides }: { slides: Array<(active: boolean) => ReactN
             type="button"
             aria-label="Next slide"
             onClick={() => go(index + 1)}
-            className="absolute right-3 top-1/2 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition hover:bg-black/65"
+            className="absolute right-2 top-1/2 flex size-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition hover:bg-black/65"
           >
             <Chevron direction="right" />
           </button>
-          <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2">
+          <div className="absolute bottom-1 left-1/2 flex -translate-x-1/2">
             {slides.map((_, i) => (
               <button
                 key={i}
@@ -77,10 +77,14 @@ export function Carousel({ slides }: { slides: Array<(active: boolean) => ReactN
                 aria-label={`Go to slide ${i + 1}`}
                 aria-current={i === index}
                 onClick={() => go(i)}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === index ? "w-6 bg-white" : "w-1.5 bg-white/50 hover:bg-white/75"
-                }`}
-              />
+                className="flex h-9 w-8 items-center justify-center"
+              >
+                <span
+                  className={`h-1.5 rounded-full transition-all ${
+                    i === index ? "w-6 bg-white" : "w-1.5 bg-white/50"
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </>
