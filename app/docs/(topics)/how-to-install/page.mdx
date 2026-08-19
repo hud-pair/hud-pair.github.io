@@ -1,0 +1,53 @@
+import { DocHeader } from "../../_components/DocHeader";
+
+export const metadata = {
+  title: "How to install: PAIR docs",
+  description: "Set up PAIR locally or connect it to your housing association's data.",
+};
+
+<DocHeader
+  eyebrow="Getting started"
+  title="How to install"
+  description="Set up PAIR locally or connect it to your housing association's data."
+/>
+
+## Before you start
+
+PAIR is built as a **static Next.js site** with a separate data layer behind it, so "installing"
+means two things: getting the site running, and pointing it at a portfolio. If you only need to
+browse the public site, you can skip straight to [How to use](/docs/how-to-use).
+
+<Callout>
+  Piloting PAIR with your own portfolio? Email
+  [s.iram@hud.ac.uk](mailto:s.iram@hud.ac.uk) and we'll set up access — there's no self-serve
+  signup yet.
+</Callout>
+
+## Running the site locally
+
+1. Clone the repository and install dependencies with `npm install`.
+2. Start the dev server with `npm run dev`.
+3. Open `http://localhost:3000` — you should see the PAIR homepage.
+
+This gives you the marketing site and docs. The dashboard itself (property lists, EPC lookups,
+Explorer recommendations) is a separate authenticated app connected to your portfolio's data.
+
+### Connecting a portfolio
+
+Once you have credentials, the dashboard reads EPC and portfolio data from your housing
+association's export. **Together Housing Group's pilot portfolio** — 6,867 homes across
+Pendle — is the reference dataset used throughout this documentation and in our
+[case studies](/case-studies).
+
+<Screenshot
+  src="/images/screenshots/dashboard-white.png"
+  alt="PAIR portfolio dashboard on first load"
+  caption="The dashboard after a portfolio has been connected."
+/>
+
+## Troubleshooting
+
+If the dashboard loads but shows no properties, the most common cause is a mismatched export
+format. Check that your EPC export includes SAP score, classification, hot water, secondary
+heating, and wall type — those five fields drive most of what Explorer can tell you, covered in
+[How to analyse](/docs/how-to-analyse).

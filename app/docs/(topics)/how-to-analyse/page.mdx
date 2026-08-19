@@ -1,0 +1,47 @@
+import { DocHeader } from "../../_components/DocHeader";
+
+export const metadata = {
+  title: "How to analyse: PAIR docs",
+  description: "Read Explorer's retrofit recommendations, feature importance, and confidence scores.",
+};
+
+<DocHeader
+  eyebrow="Guide"
+  title="How to analyse"
+  description="Read Explorer's retrofit recommendations, feature importance, and confidence scores."
+/>
+
+## What Explorer does
+
+Explorer ranks every property in a portfolio by retrofit priority. It's not a black box: every
+recommendation ships with a **confidence score** and a feature importance breakdown, so an asset
+manager can see *why* a property was ranked the way it was, not just the ranking itself.
+
+<Callout tone="warning">
+  Explorer prioritises, it doesn't decide. Treat its output as a starting point for a survey, not
+  a substitute for one.
+</Callout>
+
+## Reading a recommendation
+
+For the pilot portfolio, **classification, hot water, secondary heating, and wall type** are
+consistently the strongest predictors. A worked example — 39 Newsome Road, Huddersfield — is
+covered in the [pilot portfolio case study](/case-studies/pilot-portfolio-epc-uplift):
+
+- Current rating: band D (62)
+- Potential rating: band B (86)
+- Estimated CO2 saving: 6.20 to 2.10 tonnes a year
+
+### Confidence scores
+
+Every recommendation returns a confidence score alongside the ranking. A low score usually means
+the property's data is incomplete (missing wall type or heating fields) rather than that the
+recommendation itself is weak — worth checking the underlying EPC data in
+[How to use](/docs/how-to-use) before acting on it.
+
+## A recorded walkthrough
+
+<Video
+  src="/images/screenshots/genesis-quantum-run.mp4"
+  caption="A run through Explorer's ranking and recommendation flow."
+/>

@@ -1,0 +1,44 @@
+import { DocHeader } from "../../_components/DocHeader";
+
+export const metadata = {
+  title: "How to use: PAIR docs",
+  description: "Navigate the dashboard, filter a portfolio, and read a property's EPC detail.",
+};
+
+<DocHeader
+  eyebrow="Guide"
+  title="How to use"
+  description="Navigate the dashboard, filter a portfolio, and read a property's EPC detail."
+/>
+
+## The properties list
+
+The properties list is the home screen for asset managers: every home in the portfolio, with its
+current **EPC band**, SAP score, and property type, sortable and filterable.
+
+<Screenshot
+  src="/images/screenshots/houses-list.png"
+  alt="PAIR properties list showing the pilot portfolio"
+  caption="6,867 homes across Pendle, filterable by band, type, and location."
+/>
+
+### Filtering
+
+- Filter by **EPC band** to find everything below a target rating.
+- Filter by **property type** (house, bungalow, flat) when a retrofit programme only covers
+  certain building types.
+- Sort by SAP score to see which homes are closest to — or furthest from — the next band up.
+
+## Drilling into a property
+
+Selecting a property opens its full EPC detail: current rating, potential rating if recommended
+improvements go ahead, and the underlying certificate data.
+
+<Screenshot
+  src="/images/screenshots/epc-details.png"
+  alt="EPC detail view for a single property"
+  caption="Current vs. potential rating, with estimated CO2 impact."
+/>
+
+This is also where you'll find the link into Explorer's recommendation for that property — see
+[How to analyse](/docs/how-to-analyse) for how to read it.
