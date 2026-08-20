@@ -41,6 +41,12 @@ export function Footer() {
               <Link href="/contributions" className="text-sm text-white/80 hover:text-white">
                 Contributions
               </Link>
+              <Link href="/docs" className="text-sm text-white/80 hover:text-white">
+                Docs
+              </Link>
+              <Link href={`${process.env.NEXT_PUBLIC_API_URL}/docs`} className="text-sm text-white/80 hover:text-white">
+                API
+              </Link>
             </div>
             <div className="flex flex-col gap-3">
               <span className="font-mono text-[.7rem] uppercase tracking-[.1em] text-white/50">
@@ -57,13 +63,13 @@ export function Footer() {
               <span className="font-mono text-[.7rem] uppercase tracking-[.1em] text-white/50">
                 Partner
               </span>
-              <div className="w-fit rounded-lg bg-white p-2">
+              <div className="w-fit rounded-lg p-2">
                 <Image
                   src="/images/thg.png"
                   alt="Together Housing Group"
                   width={110}
                   height={36}
-                  className="h-7 w-auto object-contain"
+                  className="h-10 w-auto object-contain"
                 />
               </div>
             </div>
@@ -79,7 +85,7 @@ export function Footer() {
               height={44}
               className="h-8 w-auto object-contain"
             />
-            <div className="rounded-lg bg-white px-3 py-2">
+            <div className="bg-white px-3 py-2">
               <Image
                 src="/images/UKRI_EPSRC_logo.png"
                 alt="UKRI EPSRC logo"

@@ -9,6 +9,7 @@ import { caseStudies } from "@/lib/case-studies";
 export const metadata: Metadata = {
   title: "Case studies: PAIR",
   description: "How Housing Associations and the PAIR pilot portfolio put the platform to work.",
+  alternates: { canonical: "/case-studies" },
 };
 
 export default function CaseStudiesIndexPage() {

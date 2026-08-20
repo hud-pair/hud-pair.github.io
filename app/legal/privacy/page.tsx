@@ -5,6 +5,7 @@ import { Footer } from "../../_components/Footer";
 export const metadata: Metadata = {
   title: "Privacy policy: PAIR",
   description: "How the PAIR project website handles data.",
+  alternates: { canonical: "/legal/privacy" },
 };
 
 export default function PrivacyPage() {

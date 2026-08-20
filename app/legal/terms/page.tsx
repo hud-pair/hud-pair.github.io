@@ -5,6 +5,7 @@ import { Footer } from "../../_components/Footer";
 export const metadata: Metadata = {
   title: "Terms of use: PAIR",
   description: "Terms of use for the PAIR project website.",
+  alternates: { canonical: "/legal/terms" },
 };
 
 export default function TermsPage() {

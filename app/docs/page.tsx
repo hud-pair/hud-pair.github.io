@@ -8,6 +8,7 @@ import { getDocsSorted } from "@/lib/docs";
 export const metadata: Metadata = {
   title: "Docs: PAIR",
   description: "Documentation for the PAIR project: installing, using, and analysing with it.",
+  alternates: { canonical: "/docs" },
 };
 
 export default function DocsIndexPage() {

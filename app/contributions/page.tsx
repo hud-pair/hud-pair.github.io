@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Contributions: PAIR",
   description:
     "The people and organisations behind the PAIR project: Property Asset & Retrofit Insight.",
+  alternates: { canonical: "/contributions" },
 };
 
 function GenericAvatar() {
@@ -139,11 +140,11 @@ export default function ContributionsPage() {
                 className="h-12 w-auto object-contain"
               />
               <Image
-                src="/images/hud.png"
+                src="/images/uoh-logo-2019-white.svg"
                 alt="University of Huddersfield logo"
                 width={220}
                 height={70}
-                className="h-12 w-auto object-contain"
+                className="h-12 w-auto object-contain filter invert"
               />
             </div>
             <p className="mt-8 max-w-2xl text-sm leading-relaxed text-muted">
