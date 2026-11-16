@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "./Reveal";
+import { signInUrl } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -44,9 +45,9 @@ export function Footer() {
               <Link href="/docs" className="text-sm text-white/80 hover:text-white">
                 Docs
               </Link>
-              <Link href={`${process.env.NEXT_PUBLIC_API_URL}/docs`} className="text-sm text-white/80 hover:text-white">
-                API
-              </Link>
+              <a href={signInUrl} className="text-sm text-white/80 hover:text-white">
+                Sign in
+              </a>
             </div>
             <div className="flex flex-col gap-3">
               <span className="font-mono text-[.7rem] uppercase tracking-[.1em] text-white/50">
