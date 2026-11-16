@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { signInUrl } from "@/lib/site";
 
 const NAV = [
   { label: "Product", href: "/#product", section: "product" },
@@ -88,7 +89,13 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-4 md:flex">
+          <a
+            href={signInUrl}
+            className="text-sm font-medium text-ink/80 transition-colors hover:text-brand-strong"
+          >
+            Sign in
+          </a>
           <a
             href="mailto:s.iram@hud.ac.uk"
             className="inline-flex items-center rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-on-brand-deep shadow-sm transition-transform hover:-translate-y-0.5 hover:bg-brand-strong"
@@ -130,6 +137,9 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            <a href={signInUrl} className="text-sm font-medium text-ink">
+              Sign in
+            </a>
             <a
               href="mailto:s.iram@hud.ac.uk"
               className="inline-flex w-fit items-center rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-on-brand-deep"

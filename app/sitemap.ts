@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/site";
 import { caseStudies } from "@/lib/case-studies";
 import { docs } from "@/lib/docs";
 
 export const dynamic = "force-static";
 
-const siteUrl = "https://hud-pair.github.io";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

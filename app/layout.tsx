@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist_Mono, Google_Sans_Flex } from "next/font/google";
 import { ScrollToTop } from "./_components/ScrollToTop";
 import "./globals.css";
+import { siteUrl } from "@/lib/site";
 
 const googleSansFlex = Google_Sans_Flex({
   variable: "--font-gsf",
@@ -16,7 +17,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://hud-pair.github.io";
 const title = "PAIR: Property Asset & Retrofit Insight";
 const description =
   "The platform Housing Associations use to manage EPC performance, track Net Zero progress, and prioritise retrofit programmes with explainable AI.";
