@@ -4,12 +4,9 @@
 #
 name: Deploy Next.js site to Pages
 
+# Retired: the website is now deployed to the PAIR server by deploy-server.yml.
+# Kept for manual runs only (Actions tab), e.g. to publish a copy on hud-pair.github.io.
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages

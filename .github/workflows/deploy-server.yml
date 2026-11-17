@@ -1,0 +1,60 @@
+# Build the website and deploy it to the PAIR server (https://pair-hud.com) on
+# every push to `main`.
+#
+#   - `next build` produces a static export in out/ (next.config.ts: output "export")
+#   - the export is uploaded over SSH as the `pair` user and deploy/deploy.sh
+#     switches /var/www/pair-website/current to it; Nginx serves it directly
+#
+# Repository secrets (Settings -> Secrets and variables -> Actions):
+#   DEPLOY_HOST         server IP or hostname
+#   DEPLOY_SSH_KEY      private key whose public half is in /srv/pair/.ssh/authorized_keys
+#   DEPLOY_KNOWN_HOSTS  the server's SSH host keys (ssh-keyscan output)
+# See pair-backend/docs/deployment.md.
+name: Deploy website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-website
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Build static site
+        run: |
+          npm ci
+          npx --no-install next build
+          echo "${GITHUB_SHA::7}" > out/REVISION
+          tar -czf "$RUNNER_TEMP/pair-website.tgz" -C out .
+
+      - name: Configure SSH
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      - name: Upload and deploy
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+        run: |
+          SSH="ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes"
+          rsync -az -e "$SSH" deploy/deploy.sh "pair@${DEPLOY_HOST}:/var/www/pair-website/deploy.sh"
+          rsync -az -e "$SSH" "$RUNNER_TEMP/pair-website.tgz" "pair@${DEPLOY_HOST}:/var/www/pair-website/incoming.tgz"
+          $SSH "pair@${DEPLOY_HOST}" \
+            'bash /var/www/pair-website/deploy.sh /var/www/pair-website/incoming.tgz && rm -f /var/www/pair-website/incoming.tgz'
