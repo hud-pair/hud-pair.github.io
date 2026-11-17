@@ -1,0 +1,29 @@
+# PAIR: Property Asset & Retrofit Insight
+
+> PAIR is a web platform for UK housing associations to manage EPC (Energy Performance Certificate) performance across their housing stock, track progress towards Net Zero, and prioritise retrofit programmes using explainable AI. It is developed by the University of Huddersfield and funded through a UKRI (EPSRC) Impact Acceleration Account.
+
+The application itself runs at https://app.pair-hud.com and requires an account; it is not publicly browsable. Everything public about PAIR is on this website, https://pair-hud.com.
+
+## About
+
+- [Home](https://pair-hud.com/): what PAIR does, the product, and how it works
+- [Case studies](https://pair-hud.com/case-studies): how PAIR is being piloted with housing associations
+- [Together Housing Group pilot](https://pair-hud.com/case-studies/together-housing-group): an early pilot partner helping shape PAIR (a pilot in progress, not a finished result)
+- [Inside the pilot portfolio](https://pair-hud.com/case-studies/pilot-portfolio-epc-uplift): a worked example of turning a large portfolio into one explainable retrofit plan
+- [Contributions](https://pair-hud.com/contributions): the people and organisations behind the project
+
+## Documentation
+
+- [Docs overview](https://pair-hud.com/docs)
+- [How to install](https://pair-hud.com/docs/how-to-install): get PAIR running and connect it to a housing association's portfolio data
+- [How to use](https://pair-hud.com/docs/how-to-use): navigate the dashboard, filter a portfolio, and read a property's EPC detail
+- [How to analyse](https://pair-hud.com/docs/how-to-analyse): read the retrofit recommendations, feature importance and confidence scores
+
+## Legal
+
+- [Privacy](https://pair-hud.com/legal/privacy)
+- [Terms](https://pair-hud.com/legal/terms)
+
+## Contact
+
+- Project lead: Dr Shamaila Iram, University of Huddersfield (s.iram@hud.ac.uk)
